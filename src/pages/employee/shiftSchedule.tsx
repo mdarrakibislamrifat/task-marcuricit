@@ -3,25 +3,20 @@ import PageTitle from "../../components/PageTitle";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import ActionCell from "./ActionCell";
 import Table from "../../components/Table";
 
 import { records as data } from "./shiftScheduleData";
+import { Link } from "react-router-dom";
 
 const columns = [
   {
-    Header: "#",
-    accessor: "id",
-    sort: true,
-  },
-  {
-    Header: "Name",
-    accessor: "name",
+    Header: "Schedule Shift",
+    accessor: "schedule",
     sort: true,
     Cell: ({
       row,
     }: {
-      row: { original: { name: string; firstImage: string } };
+      row: { original: { schedule: string; firstImage: string } };
     }) => (
       <div className="d-flex align-items-center">
         <img
@@ -35,61 +30,40 @@ const columns = [
             marginRight: "5px",
           }}
         />
-        <span>{row.original.name}</span>
+        <span>{row.original.schedule}</span>
       </div>
     ),
   },
   {
-    Header: "OT Date",
-    accessor: "otDate",
+    Header: "Fri 21",
+    accessor: "fri21",
     sort: true,
   },
   {
-    Header: "OT Hours",
-    accessor: "otHour",
+    Header: "Sat 22",
+    accessor: "sat22",
     sort: true,
   },
   {
-    Header: "OT Type",
-    accessor: "otType",
+    Header: "Sun 23",
+    accessor: "sun23",
     sort: true,
   },
   {
-    Header: "Description",
-    accessor: "description",
+    Header: "Mon 24",
+    accessor: "mon 24",
+    sort: true,
+  },
+  {
+    Header: "Tue 25",
+    accessor: "tue25",
     sort: true,
   },
 
   {
-    Header: "Approved By",
-    accessor: "approvedBy",
+    Header: "Wed 26",
+    accessor: "wed26",
     sort: true,
-    Cell: ({
-      row,
-    }: {
-      row: { original: { approvedBy: string; image: string } };
-    }) => (
-      <div className="d-flex align-items-center">
-        <img
-          src={row.original.image}
-          alt="Profile"
-          className="mr-2"
-          style={{
-            width: "50px",
-            height: "50px",
-            borderRadius: "50%",
-            marginRight: "5px",
-          }}
-        />
-        <span>{row.original.approvedBy}</span>
-      </div>
-    ),
-  },
-
-  {
-    Header: "Action",
-    accessor: "action",
-    Cell: ({ row }: { row: number }) => <ActionCell row={row} />,
   },
 ];
 
@@ -148,9 +122,9 @@ const ShiftSchedule: React.FC = () => {
           <Button variant="primary" onClick={handleShow}>
             Assign Shifts
           </Button>{" "}
-          <Button variant="primary" onClick={handleShow}>
-            Shifts
-          </Button>
+          <Link to="/employee/shift/shifts">
+            <Button variant="primary">Shifts</Button>
+          </Link>
         </Col>
       </Row>
 

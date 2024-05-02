@@ -56,6 +56,7 @@ const ShiftSchedule = React.lazy(() =>
   import("../pages/employee/shiftSchedule")
 );
 const Overtime = React.lazy(() => import("../pages/employee/overtime"));
+const ShiftList = React.lazy(() => import("../pages/employee/shiftList"));
 
 // -other
 const Starter = React.lazy(() => import("../pages/other/Starter"));
@@ -275,6 +276,14 @@ const employeeRoutes: RoutesProps = {
       name: "Shift & Schedule",
       element: <ShiftSchedule />,
       route: PrivateRoute,
+      children: [
+        {
+          path: "/employee/shift/shifts",
+          name: "ShiftList",
+          element: <ShiftList />,
+          route: PrivateRoute,
+        },
+      ],
     },
     {
       path: "/employee/overtime",
